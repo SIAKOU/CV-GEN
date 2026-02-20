@@ -9,6 +9,10 @@ Application React moderne et complète pour créer des CV professionnels avec pl
 
 ## ✨ Fonctionnalités Complètes
 
+- 📍 **Page d'accueil** invitant l'utilisateur à générer un CV ou à analyser un CV existant.
+  - L'**analyseur** affiche en fond tous les modèles (_assets/modeles_) et permet d'importer un PDF. Un verdict basique indique si le document est conforme ou suggère des améliorations.
+
+
 ### 📝 Formulaires Intelligents
 - ✅ **Validation en temps réel** avec Zod et React Hook Form
 - ✅ **Formulaire multi-étapes** avec navigation fluide

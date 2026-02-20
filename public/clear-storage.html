@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nettoyer le stockage - CV Pro AI</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .success {
+            background: #10b981;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .info {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: #374151;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🔧 Nettoyer le stockage</h1>
+        <p>Si vous rencontrez des erreurs avec l'application CV Pro AI, cliquez sur le bouton ci-dessous pour nettoyer les données stockées localement.</p>
+        
+        <div class="info">
+            <strong>⚠️ Attention :</strong> Cette action supprimera toutes vos données CV sauvegardées localement. Assurez-vous d'avoir exporté vos CV importants avant de continuer.
+        </div>
+        
+        <button onclick="clearStorage()">Nettoyer le stockage</button>
+        
+        <div class="success" id="success">
+            ✅ Stockage nettoyé avec succès ! Vous pouvez maintenant retourner à l'application.
+        </div>
+    </div>
+
+    <script>
+        function clearStorage() {
+            try {
+                // Clear localStorage
+                localStorage.clear();
+                
+                // Clear sessionStorage
+                sessionStorage.clear();
+                
+                // Clear cookies
+                document.cookie.split(";").forEach(function(c) { 
+                    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+                });
+                
+                // Show success message
+                document.getElementById('success').style.display = 'block';
+                
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 2000);
+            } catch (error) {
+                alert('Erreur lors du nettoyage : ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
